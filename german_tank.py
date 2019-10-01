@@ -26,11 +26,12 @@ def german(ground_truth):
 
 samples = np.array([german(true_tank_distribution) for _ in range(100)])
 
-fig, axes = plt.subplots(3, 1, sharex=True)
+fig, axes = plt.subplots(3, 1, sharex=True, figsize=(10, 10))
 axes[0].hist(samples[:, 0])
 axes[0].title.set_text('double the mean')
 axes[1].hist(samples[:, 1])
 axes[1].title.set_text('frequentist MVUE')
 axes[2].hist(samples[:, 2])
 axes[2].title.set_text('bayesian median posterior')
-plt.show()
+plt.savefig('plots/german_estimators.png')
+plt.close()
