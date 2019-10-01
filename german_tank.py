@@ -2,9 +2,6 @@ import numpy as np
 from scipy.stats import randint
 import matplotlib.pyplot as plt
 
-n_tanks = 5000
-true_tank_distribution = randint(0, n_tanks)
-
 def double_mean_estimator(sample):
     return sample.mean() * 2
 
@@ -18,13 +15,13 @@ def bayes_estimator(sample):
     k = len(sample)
     return m + (m * np.log(2)) / (k - 1)
 
-def german(ground_truth):
-    tank_sample = ground_truth.rvs(50)
+def german():
+    tank_sample = np.random.choice(5000, 50, replace=False) + 1
     return (double_mean_estimator(tank_sample),
         freq_estimator(tank_sample), 
         bayes_estimator(tank_sample))
 
-samples = np.array([german(true_tank_distribution) for _ in range(100)])
+samples = np.array([german() for _ in range(100)])
 
 fig, axes = plt.subplots(3, 1, sharex=True, figsize=(10, 10))
 axes[0].hist(samples[:, 0])
