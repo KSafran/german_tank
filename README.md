@@ -1,4 +1,5 @@
 # German Tank Problem
+In World War II the Germans are presumed to have manufactured `N` tanks marked with serial numbers from 1 to `N`. Suppose you have captured a random sample of `k` German tanks, and can see their serial numbers. Assuming these tanks represent draws from a discrete uniform distribution without replacement, what is the best estimate for the total number of tanks the Germans have (e.i. `N`).
 
 I was asked about the [German Tank Problem](https://en.wikipedia.org/wiki/German_tank_problem) in an interview, and I got the question wrong, so I'm reviewing it for my own clarification here. The problem boils down to coming up with the minimum variance unbiased estimator (MVUE) for the population maximum of a discrete uniform distribution. The estimator that I came up with was to double the sample mean to estimate the population maximum. The frequentist MVUE is `m + m/k - 1` where m is the sample max and k in the number of samples. Intuitively, you can think of this as taking the sample max and then adding the average space between samples. 
 
